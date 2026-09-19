@@ -468,8 +468,8 @@ If you use BahriApp or BahriAdmin in your research, please cite:
 ```bibtex
 @article{aseres2026bahriapp,
   title   = {BahriApp: An Android-Based Multimodal Behavioral Biometric Dataset Acquisition Platform},
-  author  = {Aseres, Animaw Kerie and Beyene, Asrat Mulatu and Tegegne, Lemlem Kassa and Daniel, Wongel Dawit},
-  journal = {IEEE Access},
+  author  = {Animaw Kerie Aseres , Lemlem Kassa Tegegne , and Asrat Mulatu Beyene},
+  journal = {SoftwareX},
   year    = {2026}
 }
 ```
