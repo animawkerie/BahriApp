@@ -5,7 +5,7 @@ be repeated and the comparison checked, per reviewer comment R1-1.
 
 ## Databases and date
 
-Searched **January 2026** across:
+Searched **September 2026** across:
 
 - Scopus
 - IEEE Xplore
