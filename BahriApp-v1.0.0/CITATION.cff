@@ -1,0 +1,76 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software or analyse the pilot corpus it collected, please
+  cite this version. Note that v1.0.0 contains known defects documented in
+  ARCHIVAL_NOTICE.md; use v1.1.0 for new data collection.
+title: >-
+  BahriApp: An Android Platform for Gamified Multimodal Behavioural-Biometric
+  Data Acquisition with Native Amharic (Ge'ez) Keystroke Support
+version: 1.0.0
+date-released: "2026-09-19"
+type: software
+license: MIT
+repository-code: "https://github.com/animawkerie/BahriApp-Data-Collection-Tool"
+url: "https://doi.org/10.5281/zenodo.XXXXXXX"
+doi: 10.5281/zenodo.XXXXXXX
+
+authors:
+  - family-names: Aseres
+    given-names: Animaw Kerie
+    email: animaw.kerie@kue.edu.et
+    affiliation: >-
+      Department of Software Engineering, Addis Ababa Science and Technology
+      University, Addis Ababa, Ethiopia
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # add before deposit
+  - family-names: Beyene
+    given-names: Asrat Mulatu
+    affiliation: >-
+      Department of Electrical and Computer Engineering, Addis Ababa Science
+      and Technology University, Addis Ababa, Ethiopia
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: Tegegne
+    given-names: Lemlem Kassa
+    affiliation: >-
+      Department of Software Engineering, Addis Ababa Science and Technology
+      University, Addis Ababa, Ethiopia
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+
+abstract: >-
+  BahriApp is an open-source Android platform that acquires eleven
+  behavioural-biometric modalities within a single application: bilingual
+  fixed-text, free-text and password keystroke dynamics; swipe and tap gesture
+  dynamics; handwriting stroke trajectories in two scripts; and accelerometer
+  and gyroscope streams. Its principal contribution is native keystroke capture
+  for Amharic through an in-application two-tier fidel keyboard that logs
+  physical key events rather than composed output, making the Ge'ez
+  order-selection step observable. This is version 1.0.0, archived unmodified
+  as the version that collected the pilot corpus; it contains known defects and
+  is superseded by version 1.1.0.
+
+keywords:
+  - behavioural biometrics
+  - keystroke dynamics
+  - Amharic
+  - Ge'ez script
+  - continuous authentication
+  - multimodal data acquisition
+  - Android
+  - gamification
+  - research software engineering
+
+references:
+  - type: article
+    title: >-
+      BahriApp: An Android platform for gamified multimodal
+      behavioural-biometric data acquisition with native Amharic (Ge'ez)
+      keystroke support
+    authors:
+      - family-names: Aseres
+        given-names: Animaw Kerie
+      - family-names: Beyene
+        given-names: Asrat Mulatu
+      - family-names: Tegegne
+        given-names: Lemlem Kassa
+    journal: SoftwareX
+    year: 2026
+    doi: 10.1016/j.softx.XXXX.XXXXXX

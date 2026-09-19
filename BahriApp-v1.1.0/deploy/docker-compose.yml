@@ -1,0 +1,69 @@
+# BahriApp v1.1 — local development stack.
+#
+# Lets a third party run the backend without any author credentials, which
+# v1.0 made impossible (reviewer comment R1-16).
+#
+#   cp ../.env.example ../.env   # then edit
+#   docker compose --env-file ../.env up
+#
+# Brings up PostgreSQL with the ingestion schema, and a TLS-terminating proxy
+# with a self-signed certificate so the client can be exercised over HTTPS
+# exactly as it would be in production.
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-bahri}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-bahri}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - bahri_pgdata:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bahri}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # TLS terminator. The client refuses plain HTTP unless explicitly built with
+  # BAHRI_ALLOW_INSECURE=true, so a local stack still needs a certificate.
+  # Generate one first:
+  #   mkdir -p certs && openssl req -x509 -newkey rsa:2048 -nodes \
+  #     -keyout certs/server.key -out certs/server.crt -days 365 \
+  #     -subj "/CN=localhost"
+  proxy:
+    image: nginx:1.25-alpine
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "8443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+
+  api:
+    # Replace with your built Dart Frog image, or build from ../backend.
+    # The pilot ran Dart Frog 1.1 on Dart 3.4.3.
+    image: dart:3.4.3
+    working_dir: /app
+    command: >
+      sh -c "echo 'Place the Dart Frog ingestion service in ./backend and
+      point this service at it. See docs/backend.md.' && sleep infinity"
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-bahri}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-bahri}
+      BAHRI_JWT_SECRET: ${BAHRI_JWT_SECRET:?set BAHRI_JWT_SECRET in .env}
+      BAHRI_ACCESS_TOKEN_TTL: ${BAHRI_ACCESS_TOKEN_TTL:-3600}
+    expose:
+      - "8080"
+
+volumes:
+  bahri_pgdata:

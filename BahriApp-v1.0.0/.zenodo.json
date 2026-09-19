@@ -1,0 +1,64 @@
+{
+  "upload_type": "software",
+  "title": "BahriApp v1.0.0: An Android Platform for Gamified Multimodal Behavioural-Biometric Data Acquisition with Native Amharic (Ge'ez) Keystroke Support",
+  "version": "1.0.0",
+  "publication_date": "2026-09-19",
+  "language": "eng",
+  "access_right": "open",
+  "license": "MIT",
+  "description": "<p><strong>Archived unmodified. This version contains known defects and is superseded by v1.1.0. Use v1.1.0 for new data collection.</strong></p><p>BahriApp is an open-source Android platform that acquires eleven behavioural-biometric modalities within a single application: bilingual fixed-text, free-text and password keystroke dynamics; swipe and tap gesture dynamics; handwriting stroke trajectories in two scripts; and accelerometer and gyroscope streams. Its principal contribution is native keystroke capture for Amharic, implemented through an in-application two-tier fidel keyboard that logs physical key events rather than composed output, making the Ge'ez order-selection step observable.</p><p><strong>Why this version is archived.</strong> v1.0.0 is the version that collected the pilot corpus reported in the accompanying SoftwareX article (454 enrolled participants, 265 contributing, 341,606 records, 1 January to 7 May 2025). It is preserved exactly as it ran, because anyone analysing that corpus needs to see the code that produced it, and because the measurements reported in the article were taken on this code and cannot be checked against a corrected version.</p><p><strong>Known defects.</strong> An audit of this code against the data it produced, conducted after peer review, found defects in the gyroscope significance filter, the orientation estimators, and the swipe, tap, keystroke and gait feature extractors, together with an export-integrity defect affecting timestamp resolution in the tap dataset. Eighteen of the 165 exported feature columns are invalid as defined; fourteen of those cannot be recomputed because the necessary raw inputs were never stored.</p><p><strong>Security.</strong> This repository's README claims end-to-end encryption. That claim is withdrawn in full: a source-level audit established that no encryption of any kind was implemented. All endpoints used plain HTTP to a hard-coded address, the on-device cache was unencrypted, and the authentication token was stored but never attached to uploads. The pilot corpus was collected under that posture.</p><p>See ARCHIVAL_NOTICE.md in this archive for the full disclosure, and the CHANGELOG, SECURITY and data-dictionary documents in v1.1.0 for the complete analysis and corrections.</p>",
+  "creators": [
+    {
+      "name": "Aseres, Animaw Kerie",
+      "affiliation": "Department of Software Engineering, Addis Ababa Science and Technology University, Addis Ababa, Ethiopia"
+    },
+    {
+      "name": "Beyene, Asrat Mulatu",
+      "affiliation": "Department of Electrical and Computer Engineering, Addis Ababa Science and Technology University, Addis Ababa, Ethiopia"
+    },
+    {
+      "name": "Tegegne, Lemlem Kassa",
+      "affiliation": "Department of Software Engineering, Addis Ababa Science and Technology University, Addis Ababa, Ethiopia"
+    }
+  ],
+  "keywords": [
+    "behavioural biometrics",
+    "keystroke dynamics",
+    "Amharic",
+    "Ge'ez script",
+    "continuous authentication",
+    "multimodal data acquisition",
+    "Android",
+    "gamification",
+    "research software engineering",
+    "Flutter"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.XXXXXXX",
+      "relation": "isPreviousVersionOf",
+      "resource_type": "software",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1016/j.softx.XXXX.XXXXXX",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.XXXXXXX",
+      "relation": "isSourceOf",
+      "resource_type": "dataset",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://github.com/animawkerie/BahriApp-Data-Collection-Tool",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Archived unmodified as the version that collected the pilot corpus. Contains known defects documented in ARCHIVAL_NOTICE.md. Superseded by v1.1.0. The four files ARCHIVAL_NOTICE.md, MANIFEST.sha256, .zenodo.json and CITATION.cff were added for archival purposes only; no original source file was modified, and MANIFEST.sha256 allows this to be verified.",
+  "communities": []
+}
